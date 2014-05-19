@@ -1,0 +1,49 @@
+Server:
+  Core - handles connections and loading of plugins/hooks
+  Plugins/Hooks - handles verious pages and the WebSockets connections for
+                  inter-client communications
+  Renderer - template engine, tbd (dom.js and dust.js seem to be the best for 
+                                   this use - though Jade seems nice and the
+                                   HAML-like syntax is close to YAML)
+  database - should be pluggable, but for testing NEDB seems to be good
+  
+
+other bits:
+  paper.js (paperjs.org) for convenience functions related to canvas drawing,
+     though the scene-graph interface offered by cake.js might be better.
+  socket.io for client-server interaction (such as client chat, etc...)
+  
+
+  Node on mind-map is generic and there should be nothing special about
+  the root node other than it not having a parent node (or nodes - some
+  items might require more than one parent!)
+
+
+Server Global Object:
+  Stores configuration data (in a simple key->value store)
+  passed as parameter to plugin registration function so plugin can register
+   callback handlers for different paths or media types.
+  plugins export a "register" function that takes the app object as a 
+   parameter
+
+  API:
+   object.setConfigValue(<name>, <value>)
+         .getConfigValue()
+	 .register(<pluginObject>)
+
+   pluginObject:
+     {
+       'pluginName' : <string>,
+       'pluginAuthor': <string - possibly do the whole name <email> deal>,
+       'pluginSite': <string - web address>,
+       'pluginVersion': <string, user-defined format>,
+       'pageHandlers': {
+          <page or directory name> : <anon function to handle this>,
+          ... },
+       'mimeHandlers': {
+          <mime type>: <anon function to handle the type>,
+          ... },
+       'hooks': {
+          <hook name>: <anon function for hook>,
+          ... }
+      }
