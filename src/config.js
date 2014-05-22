@@ -26,7 +26,8 @@ function config( options ) {
 	if( err.code == 'ENOENT' ) {
 	    console.warn( 'Configuration file not found - using defaults' );
 	} else {
-	    console.err(String(err));
+	    // rethrow error
+	    throw err;
 	}
     }
     
@@ -34,7 +35,8 @@ function config( options ) {
 	try {
 	    conf = yaml.load(base_data);
 	} catch(err) {
-	    console.log(String(err));
+	    // simply rethrow the error
+	    throw err;
 	}
     }
 }
