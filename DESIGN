@@ -10,9 +10,10 @@ Server:
 
 other bits:
   paper.js (paperjs.org) for convenience functions related to canvas drawing,
-     though the scene-graph interface offered by cake.js might be better.
+     though the scene-graph interface offered by cake.js might be better. 
+     'SceneGraph.js' is the final decision.
   socket.io for client-server interaction (such as client chat, etc...)
-  
+    This might have been good, but bus.io or Hapi will be better.
 
   Node on mind-map is generic and there should be nothing special about
   the root node other than it not having a parent node (or nodes - some
@@ -47,3 +48,6 @@ Server Global Object:
           <hook name>: <anon function for hook>,
           ... }
       }
+
+Need to decide on fs layout and whether a fully virtualized fs-layer might
+be a good thing.
