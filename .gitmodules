@@ -1,3 +1,0 @@
-[submodule "dependencies/js-yaml"]
-	path = dependencies/js-yaml
-	url = git@github.com:dshadowwolf/js-yaml.git
